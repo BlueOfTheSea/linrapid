@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/layuiadmin/layui.1/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+            <div class="layui-card-header">菜单管理</div>
+            <div id="test1"></div>
+            <br>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="/static/layuiadmin/layui.1/layui.js"></script>
+<script>
+    layui.use(['tree', 'transfer'], function () {
+
+        var $ = layui.$,
+            transfer = layui.transfer,
+            tree = layui.tree;
+
+
+
+        function post_data() {
+            var result = 1;
+
+            $.ajax({
+
+                url: 'index',
+
+                type: "post",
+
+                data: {},
+
+                async: false,
+
+                success: function (data) {
+
+                    result = data.data;
+
+                }
+
+            });
+            return result
+        }
+
+
+        var uid = '';
+        tree.render({
+            elem: '#test1'
+            , data: [post_data()]
+            , id: 'test-tree-demoId1'
+            // ,showLine: false  //是否开启连接线
+            , onlyIconControl: false  //是否仅允许节点左侧图标控制展开收缩
+            , edit: ['add', 'update', 'del'] //操作节点的图标
+            , text: {
+                defaultNodeName: '未命名' //节点默认名称
+                , none: '无数据' //数据为空时的提示文本
+            }
+            , operate: function (obj) {
+                var type = obj.type; //得到操作类型：add、edit、del
+                switch (type) {
+                    case 'add':
+                        var data = {'uid': obj.data.id}
+
+                        $.ajax({
+
+                            url: 'save',
+
+                            type: "post",
+
+                            data: data,
+
+                            async: false,
+
+                            success: function (data) {
+
+                                if (data.code == 200) {
+                                    layer.msg('添加成功', {
+                                        offset: '15px'
+                                        , icon: 1
+                                    });
+
+                                } else {
+                                    layer.msg('添加失败', {
+                                        offset: '15px'
+                                        , icon: 2
+                                    });
+                                }
+                            }
+
+                        });
+                        break;
+                    case 'update':
+                        $.ajax({
+
+                            url: 'update',
+
+                            type: "post",
+
+                            data: obj.data,
+
+                            async: false,
+
+                            success: function (data) {
+
+                                if (data.code == 200) {
+                                    layer.msg('修改成功', {
+                                        offset: '15px'
+                                        , icon: 1
+                                    });
+
+                                } else {
+                                    layer.msg('修改失败', {
+                                        offset: '15px'
+                                        , icon: 2
+                                    });
+                                }
+                            }
+
+                        });
+
+
+                        break;
+                    case 'del':
+
+                        id = obj.data.id
+                        $.post('delete', {'id': id}, function (i) {
+                            if (i.code == 200) {
+                                layer.msg('删除成功', {
+                                    offset: '15px'
+                                    , icon: 1
+                                });
+                            } else {
+                                layer.msg('删除失败', {
+                                    offset: '15px'
+                                    , icon: 2
+                                });
+                            }
+                        })
+                        break;
+                }
+                tree.reload('test-tree-demoId1', {
+                    data: [post_data()]
+                });
+
+                // console.log(type)
+
+
+            }
+        });
+
+
+        //基本演示
+
+
+    });
+</script>
+</body>
+</html>
