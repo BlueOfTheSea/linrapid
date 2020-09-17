@@ -17,6 +17,7 @@ class ExceptionHandle extends Handle
 {
     /**
      * 不需要记录信息（日志）的异常类列表
+     *
      * @var array
      */
     protected $ignoreReport = [
@@ -44,8 +45,8 @@ class ExceptionHandle extends Handle
      * Render an exception into an HTTP response.
      *
      * @access public
-     * @param \think\Request   $request
-     * @param Throwable $e
+     * @param  \think\Request $request
+     * @param  Throwable      $e
      * @return Response
      */
     public function render($request, Throwable $e): Response

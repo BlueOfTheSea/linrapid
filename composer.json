@@ -1,5 +1,5 @@
 {
-    "name": "topthink/think",
+    "name": "linphp/linrapid",
     "description": "the new thinkphp framework",
     "type": "project",
     "keywords": [
@@ -45,6 +45,8 @@
         "post-autoload-dump": [
             "@php think service:discover",
             "@php think vendor:publish"
-        ]
+        ],
+        "fix-style": "phpcbf app"
+
     }
 }

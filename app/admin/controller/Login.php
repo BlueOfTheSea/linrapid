@@ -12,13 +12,14 @@ class Login
 
     /**
      * @Inject()
-     * @var loginService
+     * @var      loginService
      */
     public $loginService;
 
 
     /**
      * 显示资源列表
+     *
      * @return mixed
      * @author Administrator
      */
@@ -30,6 +31,7 @@ class Login
 
     /**
      * 保存新建的资源.
+     *
      * @return mixed
      * @author Administrator
      */

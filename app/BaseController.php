@@ -14,32 +14,37 @@ abstract class BaseController
 {
     /**
      * Request实例
+     *
      * @var \think\Request
      */
     protected $request;
 
     /**
      * 应用实例
+     *
      * @var \think\App
      */
     protected $app;
 
     /**
      * 是否批量验证
+     *
      * @var bool
      */
     protected $batchValidate = false;
 
     /**
      * 控制器中间件
+     *
      * @var array
      */
     protected $middleware = [];
 
     /**
      * 构造方法
+     *
      * @access public
-     * @param  App  $app  应用对象
+     * @param  App $app 应用对象
      */
     public function __construct(App $app)
     {
@@ -52,10 +57,12 @@ abstract class BaseController
 
     // 初始化
     protected function initialize()
-    {}
+    {
+    }
 
     /**
      * 验证数据
+     *
      * @access protected
      * @param  array        $data     数据
      * @param  string|array $validate 验证器名或者验证规则数组

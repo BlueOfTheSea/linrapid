@@ -26,46 +26,46 @@
                         <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
                     </a>
                 </li>
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <a href="http://www.layui.com/admin/" target="_blank" title="前台">-->
-<!--                        <i class="layui-icon layui-icon-website"></i>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--                    <a href="http://www.layui.com/admin/" target="_blank" title="前台">-->
+                <!--                        <i class="layui-icon layui-icon-website"></i>-->
+                <!--                    </a>-->
+                <!--                </li>-->
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;" layadmin-event="refresh" title="刷新">
                         <i class="layui-icon layui-icon-refresh-3"></i>
                     </a>
                 </li>
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search"-->
-<!--                           layadmin-event="serach" lay-action="template/search.html?keywords=">-->
-<!--                </li>-->
+                <!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--                    <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search"-->
+                <!--                           layadmin-event="serach" lay-action="template/search.html?keywords=">-->
+                <!--                </li>-->
             </ul>
             <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
 
-<!--                <li class="layui-nav-item" lay-unselect>-->
-<!--                    <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">-->
-<!--                        <i class="layui-icon layui-icon-notice"></i>-->
+                <!--                <li class="layui-nav-item" lay-unselect>-->
+                <!--                    <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">-->
+                <!--                        <i class="layui-icon layui-icon-notice"></i>-->
 
-<!--                        &lt;!&ndash; 如果有新消息，则显示小圆点 &ndash;&gt;-->
-<!--                        <span class="layui-badge-dot"></span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <a href="javascript:;" layadmin-event="theme">-->
-<!--                        <i class="layui-icon layui-icon-theme"></i>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <a href="javascript:;" layadmin-event="note">-->
-<!--                        <i class="layui-icon layui-icon-note"></i>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <a href="javascript:;" layadmin-event="fullscreen">-->
-<!--                        <i class="layui-icon layui-icon-screen-full"></i>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!--                        &lt;!&ndash; 如果有新消息，则显示小圆点 &ndash;&gt;-->
+                <!--                        <span class="layui-badge-dot"></span>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+                <!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--                    <a href="javascript:;" layadmin-event="theme">-->
+                <!--                        <i class="layui-icon layui-icon-theme"></i>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+                <!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--                    <a href="javascript:;" layadmin-event="note">-->
+                <!--                        <i class="layui-icon layui-icon-note"></i>-->
+                <!--                    </a>-->
+                <!--                </li>-->
+                <!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--                    <a href="javascript:;" layadmin-event="fullscreen">-->
+                <!--                        <i class="layui-icon layui-icon-screen-full"></i>-->
+                <!--                    </a>-->
+                <!--                </li>-->
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;">
                         <cite>贤心</cite>
@@ -74,7 +74,7 @@
                         <dd><a lay-href="set/user/info.html">基本资料</a></dd>
                         <dd><a lay-href="set/user/password.html">修改密码</a></dd>
                         <hr>
-                        <dd  id="logout" style="text-align: center;"><a>退出</a></dd>
+                        <dd id="logout" style="text-align: center;"><a>退出</a></dd>
                     </dl>
                 </li>
 
@@ -97,22 +97,49 @@
 
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
                     lay-filter="layadmin-system-side-menu">
+
+                    {foreach $Menu as $v}
                     <li data-name="home" class="layui-nav-item layui-nav-itemed">
+                        {if $v['uid']==0}
+
                         <a href="javascript:;" lay-tips="主页" lay-direction="2">
                             <i class="layui-icon layui-icon-home"></i>
-                            <cite>主页</cite>
+                            <cite>{$v['menu_name']}</cite>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd data-name="console" class="layui-this">
-                                <a lay-href="{:url('admin/useradmin/index')}">控制台</a>
+
+                            {foreach $Menu as $val}
+                            {if $v['id']==$val['uid']}
+
+                            {if isset($val['url']) }
+                            <dd data-name="console" >
+                                <a lay-href="/{$val['url']}">{$val['menu_name']}</a>
+                            </dd>
+                            {else/}
+
+                            <dd data-name="form">
+                                <a href="javascript:;">{$val['menu_name']}</a>
+
+                                {foreach $Menu as $value}
+                                    {if $value['uid']==$val['id'] &&isset($value['url'])}
+                                        <dl class="layui-nav-child">
+                                            <dd><a lay-href="/{$value['url']}">{$value['menu_name']}</a></dd>
+                                        </dl>
+                                     {else/}
+                                    {/if}
+                                {/foreach}
                             </dd>
 
-                            <dd data-name="console">
-                                <a lay-href="{:url('admin/menu/index')}">菜单管理</a>
-                            </dd>
+                            {/if}
+
+                            {/if}
+                            {/foreach}
+
                         </dl>
+                        {/if}
                     </li>
 
+                    {/foreach}
 
                 </ul>
             </div>
@@ -146,7 +173,7 @@
         <!-- 主体内容 -->
         <div class="layui-body" id="LAY_app_body">
             <div class="layadmin-tabsbody-item layui-show">
-                <iframe src="{:url('admin/useradmin/index')}" frameborder="0" class="layadmin-iframe"></iframe>
+                <iframe src="{:url('admin/menu/index')}" frameborder="0" class="layadmin-iframe"></iframe>
             </div>
         </div>
 
@@ -166,7 +193,7 @@
 
         $('#logout').click(function () {
 
-        window.location.href='/admin/login/logout'
+            window.location.href = '/admin/login/logout'
         })
 
 
