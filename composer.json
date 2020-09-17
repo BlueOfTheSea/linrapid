@@ -1,6 +1,6 @@
 {
-    "name": "topthink/think",
-    "description": "the new thinkphp framework",
+    "name": "linphp/linrapid",
+    "description": "linrapid",
     "type": "project",
     "keywords": [
         "framework",
@@ -11,13 +11,10 @@
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "liu21st",
-            "email": "liu21st@gmail.com"
-        },
-        {
-            "name": "yunwuxin",
-            "email": "448901948@qq.com"
-        }        
+            "name": "houlinlin",
+            "email": "ymdhis@163.com"
+        }
+
     ],
     "require": {
         "php": ">=7.1.0",
@@ -45,6 +42,8 @@
         "post-autoload-dump": [
             "@php think service:discover",
             "@php think vendor:publish"
-        ]
+        ],
+        "fix-style": "phpcbf app"
+
     }
 }

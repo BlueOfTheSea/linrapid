@@ -16,6 +16,7 @@ class LoginService extends BaseService
 
     /**
      * 登录
+     *
      * @return mixed
      * @author Administrator
      */
@@ -53,6 +54,6 @@ class LoginService extends BaseService
     public function logout()
     {
         Session::delete('UserAdmin');
-       return redirect('/admin/login/dologin');
+        return redirect('/admin/login/dologin');
     }
 }

@@ -19,13 +19,14 @@ class MenuService extends BaseService
 
     /**
      * 显示资源列表
+     *
      * @return mixed
      * @author Administrator
      */
     public function index()
     {
         $MenuModel = new MenuModel();
-        $data      = $MenuModel->field('menu_name as title,id,uid')->select()->toArray();
+        $data      = $MenuModel->field('menu_name as title,id,uid')->order('sor_t asc')->select()->toArray();
         if (Request::isPost()) {
 
             $data = [
@@ -48,7 +49,8 @@ class MenuService extends BaseService
 
     /**
      * 查询无限极分类
-     * @param $data
+     *
+     * @param  $data
      * @return array
      * @author Administrator
      */
@@ -72,6 +74,7 @@ class MenuService extends BaseService
 
     /**
      * 保存新建的资源.
+     *
      * @return mixed
      * @author Administrator
      */
@@ -92,6 +95,7 @@ class MenuService extends BaseService
 
     /**
      * 显示指定的资源
+     *
      * @return mixed
      * @author Administrator
      */
@@ -105,6 +109,7 @@ class MenuService extends BaseService
 
     /**
      * 保存更新的资源
+     *
      * @return mixed
      * @author Administrator
      */
@@ -146,6 +151,7 @@ class MenuService extends BaseService
 
     /**
      * 删除指定资源
+     *
      * @return mixed
      * @author Administrator
      */
@@ -161,9 +167,10 @@ class MenuService extends BaseService
 
     /**
      * 菜单分组应用
-     * @param $array
-     * @param int $pid
-     * @param int $level
+     *
+     * @param  $array
+     * @param  int $pid
+     * @param  int $level
      * @return array
      * @author Administrator
      */
