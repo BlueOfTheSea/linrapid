@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace app\admin\service;
 
-use Linphp\Generator\notice\Msg;
+use Linphp\WebGenerator\notice\Msg;
 use app\admin\model\LoginModel;
 use think\facade\Request;
 use think\facade\Log;
