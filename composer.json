@@ -43,7 +43,9 @@
             "@php think service:discover",
             "@php think vendor:publish"
         ],
-        "fix-style": "phpcbf app"
-
+        "fix-style": "phpcbf app",
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.example.env', '.env');\""
+        ]
     }
 }
