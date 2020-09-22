@@ -20,7 +20,7 @@
         "php": ">=7.1.0",
         "topthink/framework": "^6.0.0",
         "topthink/think-orm": "^2.0",
-        "linphp/webgenerator": "^1.1",
+        "linphp/webgenerator": "^1.5",
         "linphp/generator": "^1.4",
         "topthink/think-captcha": "^3.0"
     },
