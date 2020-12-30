@@ -103,7 +103,7 @@ class MenuService extends BaseService
     {
         $MenuModel = new MenuModel();
         $data      = $MenuModel->where('id', Request::param('id'))->find();
-        return Msg::JSON(200, $data, 'SUCCESS');
+        return Msg::JSON(200,'SUCCESS',$data);
     }
 
 
@@ -125,9 +125,9 @@ class MenuService extends BaseService
             $info                = $MenuModel->where('id', Request::param('id'))->save($data);
 
             if ($info) {
-                return Msg::JSON(200, '', 'SUCCESS');
+                return Msg::JSON(200, 'SUCCESS');
             }
-            return Msg::JSON(201, '', 'ERROR');
+            return Msg::JSON(201, 'ERROR');
         } else {
 
             return View::fetch();
@@ -160,9 +160,9 @@ class MenuService extends BaseService
         $MenuModel = new MenuModel();
         $data      = $MenuModel::destroy(Request::param('id'));
         if ($data) {
-            return Msg::JSON(200, '', 'SUCCESS');
+            return Msg::JSON(200, 'SUCCESS');
         }
-        return Msg::JSON(201, '', 'ERROR');
+        return Msg::JSON(201,'ERROR');
     }
 
     /**
