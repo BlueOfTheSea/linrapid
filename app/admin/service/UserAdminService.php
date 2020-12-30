@@ -52,7 +52,7 @@ class UserAdminService extends BaseService
      */
     public function read()
     {
-        $UserAdminModel=new UserAdminModel();$data=$UserAdminModel->where('id', Request::param('id'))->find();return Msg::JSON(200, $data, 'SUCCESS');
+        $UserAdminModel=new UserAdminModel();$data=$UserAdminModel->where('id', Request::param('id'))->find();return Msg::JSON(200,'SUCCESS', $data);
     }
 
 
@@ -65,7 +65,7 @@ class UserAdminService extends BaseService
     public function update()
     {
         $UserAdminModel=new UserAdminModel();if(Request::isPost()) {$data=$UserAdminModel->where('id', Request::param('id'))->save(Request::except(['id']));if($data) {return Msg::JSON(200, '', 'SUCCESS');
-        }return Msg::JSON(201, '', 'ERROR');
+        }return Msg::JSON(201, 'ERROR');
         }else{$info=$UserAdminModel->where('id', Request::param('id'))->find();View::assign('info', $info);return View::fetch();
         }
     }
@@ -79,7 +79,7 @@ class UserAdminService extends BaseService
      */
     public function delete()
     {
-        $UserAdminModel=new UserAdminModel();$data=$UserAdminModel::destroy(Request::param('id'));if($data) {return Msg::JSON(200, '', 'SUCCESS');
-        }return Msg::JSON(201, '', 'ERROR');
+        $UserAdminModel=new UserAdminModel();$data=$UserAdminModel::destroy(Request::param('id'));if($data) {return Msg::JSON(200, 'SUCCESS');
+        }return Msg::JSON(201, 'ERROR');
     }
 }
