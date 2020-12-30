@@ -64,7 +64,7 @@ class UserAdminService extends BaseService
      */
     public function update()
     {
-        $UserAdminModel=new UserAdminModel();if(Request::isPost()) {$data=$UserAdminModel->where('id', Request::param('id'))->save(Request::except(['id']));if($data) {return Msg::JSON(200, '', 'SUCCESS');
+        $UserAdminModel=new UserAdminModel();if(Request::isPost()) {$data=$UserAdminModel->where('id', Request::param('id'))->save(Request::except(['id']));if($data) {return Msg::JSON(200,'SUCCESS');
         }return Msg::JSON(201, 'ERROR');
         }else{$info=$UserAdminModel->where('id', Request::param('id'))->find();View::assign('info', $info);return View::fetch();
         }
