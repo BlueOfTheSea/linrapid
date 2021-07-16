@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 16/07/2021 15:52:24
+ Date: 16/07/2021 17:17:47
 */
 
 SET NAMES utf8mb4;
@@ -38,20 +38,6 @@ INSERT INTO `rapid_menu` VALUES (63, '未分配菜单', 0, '1600315969', 10000.0
 INSERT INTO `rapid_menu` VALUES (55, '管理员列表@admin/UserAdmin/index', 53, '1600163401', 1.100);
 INSERT INTO `rapid_menu` VALUES (54, '菜单管理@admin/Menu/index', 53, '1600162830', 1.200);
 INSERT INTO `rapid_menu` VALUES (53, '系统设置', 0, '1600163109', 1.000);
-
--- ----------------------------
--- Table structure for rapid_user_aaa
--- ----------------------------
-DROP TABLE IF EXISTS `rapid_user_aaa`;
-CREATE TABLE `rapid_user_aaa`  (
-  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'ID',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of rapid_user_aaa
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for rapid_user_admin
