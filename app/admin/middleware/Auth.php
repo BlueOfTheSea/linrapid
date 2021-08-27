@@ -7,7 +7,7 @@ class Auth
     public function handle($request, \Closure $next)
     {
         if(!Session::get('UserAdmin')) {
-            return redirect('/admin/login/dologin');
+             die("<script>window.parent.location='/admin/login/dologin'</script>");
         }
 
         return $next($request);
