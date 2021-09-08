@@ -21,7 +21,7 @@
         "topthink/framework": "^6.0.0",
         "topthink/think-orm": "^2.0",
         "linphp/webgenerator": "3.1",
-        "linphp/generator": "2.0",
+        "linphp/generator": "2.1",
         "topthink/think-captcha": "^3.0"
     },
     "require-dev": {
